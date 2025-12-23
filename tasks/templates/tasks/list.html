@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django To-Do List</title>
+    <style>
+        .completed { text-decoration: line-through; color: gray; }
+        body { font-family: sans-serif; max-width: 500px; margin: 50px auto; }
+    </style>
+</head>
+<body>
+    <h1>Minhas Tarefas</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Nova tarefa..." required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <span class="{% if task.completed %}completed{% endif %}">
+                {{ task.title }}
+            </span>
+            <a href="{% url 'toggle_task' task.id %}"> [Concluir/Desfazer] </a>
+            <a href="{% url 'delete_task' task.id %}" style="color: red;"> [Excluir] </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
