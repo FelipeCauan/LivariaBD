@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Livraria - Banco de Dados</title>
+</head>
+<body>
+    <h1>Livros Cadastrados no Sistema</h1>
+    <table border="1" style="width:100%; text-align:left;">
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Preço</th>
+            <th>Prateleira (Localização)</th>
+        </tr>
+        {% for livro in livros %}
+        <tr>
+            <td>{{ livro.titulo }}</td>
+            <td>{{ livro.autor }}</td>
+            <td>R$ {{ livro.preco }}</td>
+            <td>{{ livro.prateleira.genero }} - Setor: {{ livro.prateleira.numero }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Nenhum livro cadastrado ainda. Vá ao /admin para adicionar!</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/admin">Ir para o Painel de Administração</a>
+</body>
+</html>
