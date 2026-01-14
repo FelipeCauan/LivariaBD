@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Livraria</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; text-align: center; }
+        .container { max-width: 800px; margin: auto; }
+        .header { background: #2c3e50; color: white; padding: 40px; border-radius: 10px; margin-bottom: 30px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+                transition: transform 0.2s; text-decoration: none; color: #333; display: block; }
+        .card:hover { transform: translateY(-5px); background: #ecf0f1; }
+        .card h3 { color: #2980b9; margin-bottom: 10px; }
+        .stats { margin-top: 40px; font-size: 0.9em; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SGBD Livraria</h1>
+            <p>Sistema de Gerenciamento de Livros e Vendas</p>
+        </div>
+
+        <div class="menu-grid">
+            <a href="{% url 'lista_livros' %}" class="card">
+                <h3>📚 Catálogo Geral</h3>
+                <p>Ver todos os livros disponíveis no acervo.</p>
+            </a>
+
+            <a href="{% url 'dashboard' %}" class="card">
+                <h3>📊 Dashboard</h3>
+                <p>Estatísticas e análise de dados.</p>
+            </a>
+
+            <a href="/admin" class="card">
+                <h3>⚙️ Administração</h3>
+                <p>Acesso ao painel de administração do sistema.</p>
+            </a>
+        </div>
+
+        <div class="stats">
+            <p>Banco de Dados: <strong>MySql</strong> | Status: Online</p>
+        </div>
+    </div>
+
+</body>
+</html>
